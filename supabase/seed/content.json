@@ -1,0 +1,360 @@
+{
+  "profile": {
+    "name": "Arinze Nwokolo",
+    "role": "Senior Lecturer",
+    "institution": "Lagos Business School",
+    "university": "Pan-Atlantic University",
+    "lede": "I am an economist at Lagos Business School, where I also direct the Healthcare Initiative.",
+    "bio": "My research is in development economics, political economy, and behavioural and organisational economics, mostly on Nigeria: how terrorism shapes trust and identity, what oil and gas flaring do to conflict and to farms, and whether mental health therapy helps small firms grow. Much of it uses natural experiments and field data. Before LBS I was a CSAE Fellow at the University of Oxford; my PhD is from the University of Navarra. I teach Corporate Finance in the Executive and Full-time MBA.",
+    "portrait": "portrait/portrait.jpg",
+    "email": "anwokolo@lbs.edu.ng",
+    "cv": "cv/CV_Arinze_Nwokolo_October2022.pdf",
+    "affiliations": [
+      {
+        "name": "J-PAL African Scholar",
+        "url": "https://www.povertyactionlab.org/person/nwokolo"
+      },
+      {
+        "name": "NOVAFRICA",
+        "url": "https://novafrica.org/external-members/"
+      },
+      {
+        "name": "International Growth Centre",
+        "url": "https://www.theigc.org/people/arinze-nwokolo"
+      },
+      {
+        "name": "STEG and PEDL, CEPR",
+        "url": "https://grp.cepr.org/people/arinze-nwokolo"
+      }
+    ],
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?user=odl5jlAAAAAJ&hl=en"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/arinze-nwokolo-2b218074/"
+      }
+    ]
+  },
+  "papers": [
+    {
+      "slug": "climate-shocks-and-farmer-herder-conflict-in-nigeria",
+      "title": "Climate Shocks and Farmer-Herder Conflict in Nigeria",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [],
+      "selected": false
+    },
+    {
+      "slug": "free-health-care-at-birth-and-adult-mental-health-evidence-from-south-africa",
+      "title": "Free Health Care at Birth and Adult Mental Health: Evidence from South Africa",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [],
+      "selected": false
+    },
+    {
+      "slug": "friends-or-competitors-peer-effects-within-business-accelerator-programs",
+      "title": "Friends or Competitors: Peer Effects within Business Accelerator Programs",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [
+        {
+          "name": "Rupali Kaul",
+          "url": "https://sites.google.com/view/rupalikaul"
+        },
+        {
+          "name": "Yulu Tang",
+          "url": "https://sites.google.com/view/yulutang"
+        }
+      ],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [
+        {
+          "label": "PEDL project",
+          "url": "https://pedl.cepr.org/content/friends-or-competitors-peer-effects-within-business-accelerator-programs-0"
+        },
+        {
+          "label": "Trial registration",
+          "url": "https://www.socialscienceregistry.org/trials/13435"
+        }
+      ],
+      "selected": false
+    },
+    {
+      "slug": "gas-flaring-agricultural-productivity-and-labour-reallocation-evidence-from-nigeria",
+      "title": "Gas Flaring, Agricultural Productivity and Labour Reallocation: Evidence from Nigeria",
+      "section": "working-papers",
+      "year": "2025",
+      "coauthors": [],
+      "venue": "STEG working paper",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": "https://steg.cepr.org/sites/default/files/2025-05/gas_flaring_agriculture_steg.pdf",
+      "doi": "",
+      "links": [
+        {
+          "label": "Project page",
+          "url": "https://steg.cepr.org/projects/impact-pollution-agricultural-productivity-evidence-gas-flares-nigeria"
+        },
+        {
+          "label": "Replication data",
+          "url": "https://doi.org/10.17632/nyt5n3xtd6.1"
+        },
+        {
+          "label": "VoxDev podcast",
+          "url": "https://voxdev.org/topic/energy-environment/gas-flaring-threatens-agriculture-and-livelihoods-nigeria"
+        }
+      ],
+      "selected": true
+    },
+    {
+      "slug": "gas-price-shocks-air-pollution-and-infant-mortality-evidence-from-nigerian-gas-flares",
+      "title": "Gas Price Shocks, Air Pollution and Infant Mortality: Evidence from Nigerian Gas Flares",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [],
+      "selected": false
+    },
+    {
+      "slug": "oil-price-shocks-and-civil-conflict-evidence-from-nigeria",
+      "title": "Oil Price Shocks and Civil Conflict: Evidence from Nigeria",
+      "section": "publications",
+      "year": "2022",
+      "coauthors": [],
+      "venue": "The World Bank Economic Review",
+      "citation": "36(1), 171–197",
+      "status": "",
+      "abstract": "When and for what reason do governments choose to monopolize violence and consolidate power? Theory suggests three channels: when the government has coercive power against the opposition, if it shifts the distribution of power in its favor, and when contingent spoils are large. Using international oil price shocks and a novel dataset on oil-producing local government areas, this article examines how commodity prices affect civil conflict in Nigeria. Results show that a rise in oil price leads to a more than proportionate increase in government attacks on rebel groups in the oil region. The findings are consistent with the theoretical predictions: positive oil price shocks increase the monopoly of violence by the government through an increase in coercion, a rise in regaining territories from rebel groups, and an increase of violence in areas with large oil fields.",
+      "pdf": "papers/Nwokolo-2022-Oil-Price-Shocks-and-Civil-Conflict-WBER.pdf",
+      "url": null,
+      "doi": "10.1093/wber/lhab010",
+      "links": [
+        {
+          "label": "Journal page",
+          "url": "https://doi.org/10.1093/wber/lhab010"
+        },
+        {
+          "label": "Working paper version",
+          "url": "https://hicn.org/wp-content/uploads/2018/08/HiCN-WP-274.pdf"
+        }
+      ],
+      "selected": true
+    },
+    {
+      "slug": "putting-property-rights-in-context-colonial-cotton-concessions-customary-land-tenure-and-development-in-mozambique",
+      "title": "Putting Property Rights in Context: Colonial Cotton Concessions, Customary Land Tenure, and Development in Mozambique",
+      "section": "working-papers",
+      "year": "2025",
+      "coauthors": [
+        {
+          "name": "Tuğba Bozçağa",
+          "url": "https://www.tugbabozcaga.com/"
+        },
+        {
+          "name": "Robin Harding",
+          "url": "https://www.robinharding.org/"
+        }
+      ],
+      "venue": "SSRN",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5932234",
+      "doi": "10.2139/ssrn.5932234",
+      "links": [
+        {
+          "label": "David Brian Robertson Prize, APSA",
+          "url": "https://www.kcl.ac.uk/news/research-wins-recognition-from-leading-academic-association"
+        }
+      ],
+      "selected": false
+    },
+    {
+      "slug": "terror-and-educational-outcomes-evidence-from-boko-haram-attacks",
+      "title": "Terror and Educational Outcomes: Evidence from Boko Haram Attacks",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [],
+      "selected": false
+    },
+    {
+      "slug": "terrorism-and-infant-mortality-evidence-from-nigeria",
+      "title": "Terrorism and Infant Mortality: Evidence from Nigeria",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [],
+      "selected": false
+    },
+    {
+      "slug": "terrorism-trust-and-identity-evidence-from-a-natural-experiment-in-nigeria",
+      "title": "Terrorism, Trust, and Identity: Evidence from a Natural Experiment in Nigeria",
+      "section": "publications",
+      "year": "2024",
+      "coauthors": [
+        {
+          "name": "Robin Harding",
+          "url": "https://www.robinharding.org/"
+        }
+      ],
+      "venue": "American Journal of Political Science",
+      "citation": "68(3), 942–957",
+      "status": "",
+      "abstract": "We study the effects of terrorism on political trust and national versus ethnic identification. Making use of unexpected attacks by the extremist group Boko Haram in Nigeria, which occurred during the fieldwork of a public opinion survey in 2014, we show that even in a context of weak state institutions and frequent terrorist activities, terror attacks significantly increase political trust. We also find that the attacks significantly reduced the salience of respondents' national identity, instead increasing ethnic identification. These findings run counter to arguments that “rally around the flag” effects following terror attacks result from increased patriotism. The results have important implications for understanding the effects of terrorism in contexts of weak state institutions, frequent political violence, and politically salient ethnic divisions.",
+      "pdf": null,
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/ajps.12769",
+      "doi": "10.1111/ajps.12769",
+      "links": [
+        {
+          "label": "Replication data and code",
+          "url": "https://doi.org/10.7910/DVN/VOO3TD"
+        }
+      ],
+      "selected": true
+    },
+    {
+      "slug": "the-impact-of-mental-health-therapy-on-job-creation-and-business-outcomes-in-youth-and-female-led-enterprises",
+      "title": "The Impact of Mental Health Therapy on Job Creation and Business Outcomes in Youth and Female-Led Enterprises",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [
+        {
+          "name": "Jennifer Lansford",
+          "url": "https://sanford.duke.edu/profile/jennifer-lansford/"
+        },
+        {
+          "name": "Eugene Ohu",
+          "url": "https://www.lbs.edu.ng/team/eugene-ohu/"
+        }
+      ],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [
+        {
+          "label": "Trial registration",
+          "url": "https://www.socialscienceregistry.org/trials/11598"
+        },
+        {
+          "label": "Early insights",
+          "url": "https://andeglobal.org/wp-content/uploads/2022/12/Early-Insights_Impact-of-Psychotherapy_Nigeria-1.pdf"
+        },
+        {
+          "label": "IGC project",
+          "url": "https://www.theigc.org/collections/cognitive-behavioural-therapy-business-female-entrepreneurs-nigeria"
+        }
+      ],
+      "selected": false
+    },
+    {
+      "slug": "the-impact-of-trust-for-investment-evidence-from-private-equity-and-venture-capital-investment-in-africa",
+      "title": "The Impact of Trust for Investment: Evidence from Private Equity and Venture Capital Investment in Africa",
+      "section": "in-progress",
+      "year": "",
+      "coauthors": [],
+      "venue": "",
+      "citation": "",
+      "status": "",
+      "abstract": "",
+      "pdf": null,
+      "url": null,
+      "doi": "",
+      "links": [],
+      "selected": false
+    }
+  ],
+  "media": [
+    {
+      "slug": "african-scholar-spotlight-arinze-nwokolo",
+      "title": "African Scholar Spotlight: Arinze Nwokolo",
+      "kind": "interview",
+      "outlet": "J-PAL",
+      "date": "2024-02-09",
+      "url": "https://www.povertyactionlab.org/blog/2-9-24/african-scholar-spotlight-arinze-nwokolo",
+      "audio": null
+    },
+    {
+      "slug": "gas-flaring-threatens-agriculture-and-livelihoods-in-nigeria",
+      "title": "Gas flaring threatens agriculture and livelihoods in Nigeria",
+      "kind": "podcast",
+      "outlet": "VoxDevTalks",
+      "date": "2025-07-01",
+      "url": "https://voxdev.org/topic/energy-environment/gas-flaring-threatens-agriculture-and-livelihoods-nigeria",
+      "audio": "https://audioboom.com/posts/8742554.mp3"
+    },
+    {
+      "slug": "people-of-novafrica-arinze-nwokolo",
+      "title": "People of NOVAFRICA: Arinze Nwokolo",
+      "kind": "interview",
+      "outlet": "NOVAFRICA",
+      "date": "2025-02-13",
+      "url": "https://novafrica.org/17587/",
+      "audio": null
+    },
+    {
+      "slug": "the-impact-of-psychotherapy-on-business-performance-of-female-led-firms-project-update",
+      "title": "The Impact of Psychotherapy on Business Performance of Female-led Firms: project update",
+      "kind": "article",
+      "outlet": "ANDE",
+      "date": "2022-12-15",
+      "url": "https://andeglobal.org/publication/the-impact-of-psychotherapy-on-business-performance-of-female-led-firms/",
+      "audio": null
+    }
+  ],
+  "writing": []
+}

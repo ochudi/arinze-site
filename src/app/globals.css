@@ -1,0 +1,692 @@
+/*
+  One stylesheet. Personal stationery: a well-set letter from a thoughtful
+  academic. Warm white with the faintest sand tint, warm ink, one accent (a
+  muted olive) for links and for the single rule under the letterhead.
+  Fraunces for display and body, Mulish for metadata (src/fonts.ts). No
+  cards, no shadows, rules only where a letter has them.
+
+  Motion: the underline that draws itself under links on the front page,
+  the abstract opening (a height ease and a fade), and a chevron turning.
+  Every other hover and press is a colour settling over 150ms.
+*/
+
+/* Reset: only what a letter needs. */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  border: 0 solid;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  background: #fbf7f1;
+}
+body {
+  min-height: 100dvh;
+  line-height: inherit;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+h1,
+h2,
+h3 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Tokens */
+:root {
+  --paper: #fbf7f1;
+  --ink: #27231f;
+  --muted: #736b63;
+  --hairline: #e6ded2;
+  --olive: #5c6a3c;
+  --olive-deep: color-mix(in srgb, var(--olive) 70%, var(--ink));
+  --olive-soft: color-mix(in srgb, var(--olive) 38%, transparent);
+  --olive-wash: color-mix(in srgb, var(--olive) 12%, transparent);
+  --measure: 60ch;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --year-col: 3.25rem;
+  --ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  --serif: var(--font-serif), "Fraunces", Georgia, "Times New Roman", serif;
+  --display: var(--font-display), var(--serif);
+  --sans: var(--font-sans), "Mulish", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  color-scheme: light only;
+  font-family: var(--serif);
+  font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.1875rem);
+  line-height: 1.7;
+  font-kerning: normal;
+  hanging-punctuation: first;
+  -webkit-tap-highlight-color: var(--olive-wash);
+}
+/* A large screen gets larger type, not a wider line; the frame is set in ch and grows with it. */
+@media (width >= 80rem) {
+  body {
+    font-size: clamp(1.1875rem, 0.9375rem + 0.3125vw, 1.3125rem);
+  }
+}
+::selection {
+  background: #ebe3d1;
+}
+:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+/* Metadata voice: the sans, one size down, muted. Never nested. */
+.sans {
+  font-family: var(--sans);
+  font-size: 0.8125em;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Links: olive, with a soft olive hairline that firms up on hover and deepens on press. */
+a {
+  color: var(--olive);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: var(--olive-soft);
+}
+a:hover {
+  text-decoration-color: currentColor;
+}
+a:active {
+  color: var(--olive-deep);
+}
+a.quiet {
+  color: inherit;
+  text-decoration: none;
+}
+a.quiet:hover {
+  color: var(--olive);
+}
+a.quiet:active {
+  color: var(--olive-deep);
+}
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  summary,
+  button {
+    transition:
+      color 150ms ease,
+      text-decoration-color 150ms ease;
+  }
+}
+
+/* Page frame */
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding: clamp(2rem, 6vh, 3.5rem) var(--gutter) 4rem;
+}
+.page > main {
+  flex: 1 0 auto;
+}
+/* Letterhead: name and title on the left, the menu on the right, the one olive rule beneath. */
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--olive);
+  margin-bottom: clamp(3rem, 8vh, 4.5rem);
+}
+/* The title comes straight after the name in the document; the menu is placed back on the name's row. */
+.letterhead {
+  grid-area: 2 / 1 / auto / -1;
+  margin-top: 0.25rem;
+}
+.nav {
+  grid-area: 1 / 2;
+}
+.letterhead span {
+  white-space: nowrap;
+}
+.wordmark {
+  font-style: italic;
+  font-size: 1.1em;
+}
+/* Keyboard users can jump past the header; invisible until focused. */
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--paper);
+  translate: 0 -200%;
+}
+.skip:focus-visible {
+  translate: 0 0;
+}
+.nav ul {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav a {
+  display: inline-block;
+  padding-block: 0.6rem;
+  margin-block: -0.6rem;
+}
+/* The section you are in: ink, with the soft hairline a letter would draw under it. */
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  text-decoration-color: var(--olive-soft);
+}
+.nav a[aria-current="page"]:hover {
+  color: var(--olive);
+  text-decoration-color: var(--olive);
+}
+/* Footer: one line, the year on the right. */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 2rem;
+  margin-top: 6rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--hairline);
+}
+.foot ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+.foot a {
+  color: inherit;
+  text-decoration-color: var(--hairline);
+}
+.foot a:hover {
+  color: var(--olive);
+  text-decoration-color: var(--olive-soft);
+}
+
+/* Page titles and section heads */
+.title {
+  margin: 0 0 2.5rem;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+main h2 {
+  margin: 4rem 0 1.5rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+.title + section > h2 {
+  margin-top: 0;
+}
+
+/* The letter opens with one sentence set large, the small portrait beside it. */
+.home {
+  display: flow-root;
+}
+.lede,
+.note h1 {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.65rem);
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.portrait {
+  float: right;
+  width: clamp(4.5rem, 10vw, 5.5rem);
+  aspect-ratio: 4 / 5;
+  margin: 0.3em 0 1rem 1.5rem;
+}
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  mix-blend-mode: multiply;
+}
+.bio {
+  margin: 1.5rem 0 0;
+  text-wrap: pretty;
+}
+.bio + .bio {
+  margin-top: 1em;
+}
+.affil {
+  margin: 2rem 0 0;
+}
+/* An affiliation never breaks inside its own brackets; lines break at the separators. */
+.affil-item {
+  white-space: nowrap;
+}
+/* Running text keeps to about seventy characters; the portrait then has its own corner. */
+@media (width >= 60rem) {
+  .lede,
+  .bio {
+    max-width: min(32em, calc(100% - 8rem));
+  }
+}
+@media (width >= 80rem) {
+  .lede,
+  .note h1 {
+    font-size: 1.4em;
+  }
+  .title {
+    font-size: 1.85em;
+  }
+}
+.home > section {
+  margin-top: 4.5rem;
+}
+.home > section > h2 {
+  margin-top: 0;
+}
+
+/*
+  Signature interaction, front page only: the underline draws itself under
+  a link over 300ms, left to right, on hover and on keyboard focus. Two
+  background layers: a soft hairline always there, a full olive line that
+  grows from zero. Cloned per line box so wrapped links draw on every line.
+*/
+.home a {
+  text-decoration: none;
+  background-image:
+    linear-gradient(var(--olive), var(--olive)),
+    linear-gradient(var(--olive-soft), var(--olive-soft));
+  background-repeat: no-repeat;
+  background-size:
+    0 1px,
+    100% 1px;
+  background-position:
+    0 calc(100% - 0.08em),
+    0 calc(100% - 0.08em);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.home a:hover,
+.home a:focus-visible {
+  background-size:
+    100% 1px,
+    100% 1px;
+}
+.home a.quiet {
+  background-image: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .home a {
+    transition:
+      background-size 300ms var(--ease),
+      color 150ms ease;
+  }
+}
+
+/* Entries: research rows and the essay list */
+.entries > li + li {
+  margin-top: 2.75rem;
+}
+.paper {
+  display: grid;
+  grid-template-columns: var(--year-col) minmax(0, 1fr);
+  column-gap: 1rem;
+  align-items: baseline;
+}
+.year {
+  grid-column: 1;
+  font-variant-numeric: tabular-nums;
+}
+.paper-body {
+  grid-column: 2;
+  min-width: 0;
+}
+.paper-title,
+.post-title {
+  font-size: 1.15em;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+/* Titles are quiet at rest: ink, no line; the olive comes on hover. */
+.paper-title a,
+.post-title a {
+  color: var(--ink);
+  text-decoration-color: transparent;
+}
+.paper-title a:hover,
+.post-title a:hover {
+  color: var(--olive);
+  text-decoration-color: var(--olive-soft);
+}
+.home .paper-title a,
+.home .post-title a {
+  background-size:
+    0 1px,
+    0 1px;
+}
+.home .paper-title a:hover,
+.home .post-title a:hover,
+.home .paper-title a:focus-visible,
+.home .post-title a:focus-visible {
+  background-size:
+    100% 1px,
+    100% 1px;
+}
+/* Work in progress: titles only, so they read as a list, not as headings. */
+.entries.compact > li + li {
+  margin-top: 1rem;
+}
+.entries.compact :is(.paper-title, .post-title) {
+  font-size: 1em;
+}
+/* Citation row: coauthors (or the links) left, journal right. */
+.cite {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 2rem;
+  margin: 0.25rem 0 0;
+}
+.cite + .cite {
+  margin-top: 0.25rem;
+}
+/* The journal keeps to the right; when it will not share the line it takes the next one whole. */
+.venue {
+  margin-left: auto;
+  text-align: right;
+  text-wrap: balance;
+}
+/* Room to spare: the year steps out into the margin, as a date does on a letter. */
+@media (width >= 60rem) {
+  .paper {
+    margin-left: calc(-1 * (var(--year-col) + 1rem));
+  }
+  .year {
+    text-align: right;
+  }
+}
+/* Otherwise the year sits above the title, so nothing is indented beside an empty column. */
+@media (width < 60rem) {
+  .paper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .year,
+  .paper-body {
+    grid-column: 1;
+  }
+  .year:empty {
+    display: none;
+  }
+}
+/* The summary follows the title in the quieter voice, so the title leads. */
+.post-summary {
+  margin: 0.25rem 0 0;
+  font-size: 0.95em;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.post-date {
+  margin: 0.25rem 0 0;
+}
+/* A podcast plays from a word, with the time beside it. */
+.listen {
+  margin-top: 0.5rem;
+}
+.listen-time {
+  margin-left: 0.75em;
+  font-variant-numeric: tabular-nums;
+}
+.more {
+  margin: 2rem 0 0;
+}
+
+/*
+  Abstract: an accordion. "Abstract" in the metadata voice, olive, with a
+  small chevron that turns as it opens. A native disclosure, no JavaScript;
+  where the browser can animate <details> it opens with a height ease and
+  a fade, elsewhere instantly, and under reduced motion never animates.
+*/
+.abstract {
+  margin-top: 0.5rem;
+  interpolate-size: allow-keywords;
+}
+.abstract > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  width: fit-content;
+  cursor: pointer;
+  color: var(--olive);
+  font-family: var(--sans);
+  font-size: 0.8125em;
+  line-height: 1.55;
+}
+.abstract > summary::before {
+  content: "";
+  flex: none;
+  width: 0.38em;
+  height: 0.38em;
+  margin-top: -0.1em;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(-45deg);
+}
+.abstract[open] > summary::before {
+  margin-top: -0.25em;
+  transform: rotate(45deg);
+}
+.abstract > summary:hover {
+  color: var(--olive-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: var(--olive-soft);
+}
+.abstract > div {
+  margin-top: 0.5rem;
+  max-width: 32em;
+  text-wrap: pretty;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .abstract > summary::before {
+    transition:
+      transform 200ms var(--ease),
+      margin-top 200ms var(--ease);
+  }
+  .abstract::details-content {
+    height: 0;
+    opacity: 0;
+    overflow: visible clip;
+    transition:
+      height 250ms ease,
+      opacity 250ms ease,
+      content-visibility 250ms allow-discrete;
+  }
+  .abstract[open]::details-content {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+/* Essay page: the warmest reading. */
+.essay-head {
+  margin-bottom: 2.5rem;
+}
+.essay-head .title {
+  margin-bottom: 0;
+}
+.essay-meta {
+  margin: 0.75rem 0 0;
+}
+.prose {
+  max-width: 32em;
+  font-size: 1.05em;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.prose > * + * {
+  margin-top: 1.5em;
+}
+.prose h2 {
+  margin: 2.5em 0 0.75em;
+  font-size: 1.15em;
+}
+.prose h3 {
+  margin: 2em 0 0.5em;
+  font-weight: 600;
+}
+.prose strong {
+  font-weight: 600;
+}
+/* The semibold is its own small file, fetched only where an essay uses it. */
+.prose :is(strong, h3) {
+  font-family: var(--font-serif-bold), var(--serif);
+}
+.prose blockquote {
+  padding-left: 1.25em;
+  border-left: 1px solid var(--hairline);
+}
+.prose ul {
+  list-style: disc;
+  padding-left: 1.25em;
+}
+.prose ol {
+  list-style: decimal;
+  padding-left: 1.25em;
+}
+.prose li + li {
+  margin-top: 0.4em;
+}
+
+/* Notes: the not-found and error pages, set like a short letter. */
+.note {
+  max-width: 32em;
+}
+.note h1 {
+  margin-bottom: 1rem;
+}
+.note p {
+  text-wrap: pretty;
+}
+.note p + p {
+  margin-top: 1em;
+}
+.note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin-top: 2rem;
+}
+.textbutton {
+  padding: 0;
+  color: var(--olive);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: var(--olive-soft);
+}
+.textbutton:hover {
+  text-decoration-color: currentColor;
+}
+.textbutton:active {
+  color: var(--olive-deep);
+}
+
+@media (max-width: 40rem) {
+  /* A phone gets a line of about 40 characters: a touch smaller, tighter leading. */
+  body {
+    font-size: 1.0625rem;
+  }
+  .prose {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+  .head {
+    margin-bottom: 2.5rem;
+  }
+  .portrait {
+    margin-left: 1rem;
+  }
+  .home > section {
+    margin-top: 3.5rem;
+  }
+  main h2 {
+    margin-top: 3rem;
+  }
+  .entries > li + li {
+    margin-top: 2.25rem;
+  }
+  /* Narrow: coauthors and journal stack, both flush left. */
+  .cite {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .venue {
+    margin-left: 0;
+    text-align: left;
+  }
+  .cite > .links {
+    order: 1;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    font-size: 11.5pt;
+  }
+  .page {
+    min-height: auto;
+    padding: 0;
+  }
+  .nav {
+    display: none;
+  }
+  .abstract::details-content {
+    height: auto;
+    opacity: 1;
+  }
+}

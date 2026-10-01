@@ -1,0 +1,724 @@
+/*
+  The editor. The same paper, ink and olive as the site, so it feels like
+  the desk the letter is written at: labels in the sans, what he types in
+  the serif it will be read in. Fields and buttons are large enough for a
+  thumb, and Save stays at the foot of the screen.
+*/
+.admin {
+  --field: #fffdfa;
+  --field-line: color-mix(in srgb, var(--muted) 70%, var(--paper));
+  --alert: #9b3a2a;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.admin a {
+  transition: color 150ms;
+}
+
+/* Frame */
+.desk {
+  max-width: 46rem;
+  margin-inline: auto;
+  padding: clamp(1.25rem, 4vw, 2.75rem) var(--gutter) 0;
+}
+.desk-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+.admin .wordmark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3125rem;
+}
+.desk-out {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  font-size: 0.875rem;
+}
+.admin .desk-out .textbutton {
+  min-height: 0;
+  font-size: inherit;
+}
+.tabs {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: clamp(1rem, 4vw, 1.75rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--olive);
+}
+.tabs a {
+  padding: 0.6rem 0 0.7rem;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  color: var(--muted);
+  text-decoration: none;
+  box-shadow: inset 0 -2px transparent;
+  transition:
+    color 150ms,
+    box-shadow 150ms;
+}
+.tabs a:hover {
+  color: var(--ink);
+}
+.tabs a[aria-current="page"] {
+  color: var(--ink);
+  box-shadow: inset 0 -2px var(--olive);
+}
+.tabs a:focus-visible {
+  outline-offset: -2px;
+}
+
+/* Headings and running text */
+.admin h1 {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2rem);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+/* :where keeps this below the essay styles, so headings in the writing editor look as they will on the site. */
+.admin :where(h2) {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1875rem;
+}
+.admin fieldset {
+  padding: 0;
+  min-inline-size: 0;
+}
+.admin main > section {
+  margin-top: 3rem;
+}
+.admin main > section > h2 {
+  margin-bottom: 0.75rem;
+}
+.intro {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  max-width: 38rem;
+}
+.hint,
+.error,
+.crumb,
+.empty {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.error {
+  color: var(--alert);
+}
+.empty {
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+.crumb {
+  margin-bottom: 0.5rem;
+}
+.crumb a::before {
+  content: "‹ ";
+}
+/* On an edit page the title is already in the first field; the heading only says where you are. */
+.admin .crumb + h1 {
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.5rem);
+  line-height: 1.3;
+}
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  background: var(--olive);
+  color: var(--paper);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    border-color 150ms;
+}
+.admin a.button:active {
+  color: var(--paper);
+}
+.button:hover {
+  background: var(--olive-deep);
+}
+.button.plain {
+  background: none;
+  border: 1px solid var(--olive-soft);
+  color: var(--olive);
+}
+.button.plain:hover {
+  border-color: var(--olive);
+}
+.button:has(:focus-visible) {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+.admin :disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.remove {
+  margin-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+.danger {
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--alert);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--alert) 35%, transparent);
+  text-underline-offset: 0.16em;
+}
+.danger:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Overview */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 0.875rem;
+  margin-top: 2rem;
+}
+.card {
+  display: block;
+  height: 100%;
+  padding: 1.1rem 1.25rem 1.2rem;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--field);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 150ms;
+}
+.card:hover {
+  border-color: var(--olive);
+}
+.card h2 {
+  font-family: var(--display);
+  font-style: normal;
+  font-size: 1.3125rem;
+  color: var(--ink);
+}
+.card p {
+  margin-top: 0.15rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.admin a.card:active {
+  color: inherit;
+}
+.readers {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.75rem;
+}
+.readers th {
+  font-weight: 400;
+  text-align: left;
+}
+.readers thead th {
+  padding-bottom: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.readers tbody :is(th, td) {
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--hairline);
+  vertical-align: baseline;
+}
+.readers tbody th {
+  padding-right: 1rem;
+  font-family: var(--serif);
+  line-height: 1.35;
+}
+.readers .n {
+  width: 6.5rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Lists */
+.rows {
+  border-top: 1px solid var(--hairline);
+}
+.rows li {
+  border-bottom: 1px solid var(--hairline);
+}
+.rows a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.1rem 1.25rem;
+  padding: 0.85rem 0.75rem;
+  margin-inline: -0.75rem;
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 150ms;
+}
+.rows a:hover {
+  background: var(--olive-wash);
+}
+.admin .rows a:active {
+  color: inherit;
+}
+.row-title {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.35;
+}
+.row-detail {
+  grid-column: 1;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.row-detail:empty {
+  display: none;
+}
+.row-edit {
+  grid-area: 1 / 2;
+  font-size: 0.875rem;
+  color: var(--olive);
+}
+
+/* Forms */
+.form {
+  display: grid;
+  gap: 2.75rem;
+  margin-top: 2rem;
+}
+.group {
+  display: grid;
+  gap: 1.15rem;
+}
+.group > h2 + .hint {
+  margin-top: -0.9rem;
+}
+.field {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.field label,
+.field .label {
+  font-size: 0.9375rem;
+}
+.admin :where(input:not([type="checkbox"], [type="file"]), select, textarea) {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--field-line);
+  border-radius: 6px;
+  background: var(--field);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  transition: border-color 150ms;
+}
+.admin :where(input, select, textarea):hover {
+  border-color: var(--muted);
+}
+.admin :where(input, select, textarea):focus-visible {
+  outline-offset: 0;
+  border-color: var(--olive);
+}
+/* A text box grows with what is typed in it, where the browser can; rows is the fallback. */
+.admin textarea {
+  resize: vertical;
+  line-height: 1.6;
+  field-sizing: content;
+  min-height: 4lh;
+  max-height: 70vh;
+}
+.admin select {
+  appearance: none;
+  padding-right: 2.25rem;
+  background: var(--field)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23736b63' stroke-width='1.5'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E")
+    no-repeat right 0.85rem center;
+  max-width: 20rem;
+}
+.admin input.short,
+.admin input[type="date"] {
+  max-width: 11rem;
+}
+.admin ::placeholder {
+  color: color-mix(in srgb, var(--muted) 75%, var(--paper));
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+}
+.admin [aria-invalid] {
+  border-color: var(--alert);
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2rem;
+  cursor: pointer;
+}
+.check input {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--olive);
+}
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) auto;
+  align-items: center;
+  gap: 0.5rem 0.6rem;
+}
+.pair + .pair {
+  margin-top: 0.15rem;
+}
+.field > .button {
+  justify-self: start;
+}
+.file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--field-line);
+  border-radius: 8px;
+  background: var(--field);
+}
+.file img {
+  width: 3.5rem;
+  height: 4.375rem;
+  object-fit: cover;
+  border-radius: 3px;
+  filter: grayscale(1);
+}
+.file a {
+  overflow-wrap: anywhere;
+}
+.file .status {
+  flex-basis: 100%;
+}
+.admin .textbutton {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  min-height: 2.75rem;
+}
+.savebar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  margin-top: 0.5rem;
+  padding: 0.9rem 0 max(0.9rem, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(6px);
+}
+.savebar .quiet {
+  color: var(--muted);
+}
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+}
+.inline .field {
+  flex: 0 1 18rem;
+}
+.desk > main {
+  padding-bottom: 4rem;
+}
+.desk > main:has(.savebar) {
+  padding-bottom: 0;
+}
+
+/* A new paper can be filled in from its DOI. */
+.lookup {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--field);
+}
+.lookup .field {
+  flex: 1 1 14rem;
+}
+
+/* The writing editor: a formatting bar over the page he is writing. */
+.editor {
+  min-height: 24rem;
+  border: 1px solid var(--field-line);
+  border-radius: 6px;
+  background: var(--field);
+  transition: border-color 150ms;
+}
+/* A light ring: it is there for as long as he is writing. */
+.editor:focus-within {
+  border-color: var(--olive);
+  outline: 1px solid var(--olive);
+}
+.tools {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  padding: 0.35rem;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 6px 6px 0 0;
+  background: var(--field);
+}
+/* Kinds of tool are set apart by a thin rule. */
+.tools span {
+  display: flex;
+  gap: 0.15rem;
+}
+.tools span + span {
+  margin-left: 0.4rem;
+  padding-left: 0.4rem;
+  border-left: 1px solid var(--hairline);
+}
+.tools button {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0 0.7rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: var(--muted);
+  transition:
+    color 150ms,
+    background-color 150ms;
+}
+.tools :is(b, em) {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  color: var(--ink);
+}
+.tools b {
+  font-family: var(--font-serif-bold), var(--serif);
+  font-weight: 600;
+}
+.tools button:hover {
+  color: var(--ink);
+  background: var(--olive-wash);
+}
+.tools :is(button[aria-pressed="true"], button.on) {
+  color: var(--olive-deep);
+  background: color-mix(in srgb, var(--olive) 20%, transparent);
+}
+.editor .prose {
+  min-height: 21rem;
+  max-width: none;
+  padding: 1rem 1.1rem 1.5rem;
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  color: var(--ink);
+  outline: none;
+}
+.editor .prose a {
+  cursor: text;
+}
+
+/* Notes at the foot of the screen. */
+.toasts {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  translate: -50%;
+  display: grid;
+  gap: 0.5rem;
+  width: min(100% - 2rem, 26rem);
+  pointer-events: none;
+}
+/* Clear of the Save bar on a page that has one. */
+.admin:has(.savebar) .toasts {
+  bottom: calc(5.25rem + env(safe-area-inset-bottom));
+}
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8rem 0.6rem 0.8rem 1rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.9375rem;
+  box-shadow: 0 8px 24px -12px rgb(39 35 31 / 0.5);
+  pointer-events: auto;
+  transition:
+    opacity 200ms var(--ease),
+    translate 200ms var(--ease);
+}
+@starting-style {
+  .toast {
+    opacity: 0;
+    translate: 0 0.75rem;
+  }
+}
+.toast.leaving {
+  opacity: 0;
+  translate: 0 0.5rem;
+}
+.toast p {
+  flex: 1;
+}
+.admin .toast a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--paper) 50%, transparent);
+  white-space: nowrap;
+}
+.toast button {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: -0.65rem -0.35rem -0.65rem 0;
+  border-radius: 4px;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
+}
+.toast button:hover {
+  color: var(--paper);
+}
+.toast button:focus-visible {
+  outline-color: var(--paper);
+  outline-offset: 0;
+}
+
+/* A question before anything that cannot be undone. */
+.ask {
+  width: min(100% - 2rem, 25rem);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 24px 60px -24px rgb(39 35 31 / 0.45);
+  transition:
+    opacity 180ms var(--ease),
+    translate 180ms var(--ease);
+}
+.ask::backdrop {
+  background: rgb(39 35 31 / 0.32);
+  transition: opacity 180ms var(--ease);
+}
+@starting-style {
+  .ask[open] {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+  .ask[open]::backdrop {
+    opacity: 0;
+  }
+}
+.ask form {
+  padding: 1.5rem;
+}
+.admin .ask h2 {
+  font-family: var(--display);
+  font-style: normal;
+  font-size: 1.3125rem;
+  line-height: 1.3;
+}
+.ask p {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}
+.ask .field {
+  margin-top: 1rem;
+}
+/* The answer that goes ahead comes first for the keyboard and sits on the right. */
+.ask-actions {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+.button.alarm {
+  background: var(--alert);
+}
+.button.alarm:hover {
+  background: color-mix(in srgb, var(--alert) 85%, var(--ink));
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .ask,
+  .ask::backdrop {
+    transition: none;
+  }
+}
+
+/* Sign-in */
+.signin {
+  width: min(100% - 2 * var(--gutter), 22rem);
+  margin-inline: auto;
+  padding-top: clamp(3rem, 16vh, 9rem);
+}
+.signin .wordmark {
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--olive);
+  margin-bottom: 2rem;
+}
+.signin h1 {
+  font-size: 1.5rem;
+}
+.signin .form {
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+.signin .button {
+  margin-top: 0.4rem;
+}
+.signin > .hint {
+  margin-top: 2rem;
+}
+
+@media (width < 36rem) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-bottom: 0.6rem;
+  }
+  .pair + .pair {
+    margin-top: 0.25rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .pair input:nth-of-type(2) {
+    grid-area: 2 / 1;
+  }
+  .pair button {
+    grid-area: 1 / 2 / span 2;
+  }
+  .savebar .button {
+    flex: 1;
+  }
+  .readers .n {
+    width: 4.75rem;
+  }
+}
