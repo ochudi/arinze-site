@@ -348,7 +348,7 @@ export const profile: Collection = {
           label: "Opening sentence",
           type: "textarea",
           rows: 3,
-          hint: "One sentence in your own voice. It is set large at the top.",
+          hint: "Optional. A single sentence set large above the paragraph below. Leave it empty and the page opens with that paragraph.",
         },
         { name: "bio", label: "About you", type: "textarea", rows: 8 },
         {

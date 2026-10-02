@@ -265,7 +265,7 @@ main h2 {
   margin-top: 0;
 }
 
-/* The letter opens with one sentence set large, the small portrait beside it. */
+/* The letter can open with one sentence set large (the client keeps it empty); the small portrait sits beside whatever comes first. */
 .home {
   display: flow-root;
 }
@@ -296,6 +296,11 @@ main h2 {
 }
 .bio + .bio {
   margin-top: 1em;
+}
+/* With no opening sentence the paragraph starts level with the top of the portrait. */
+.portrait + .bio,
+h1 + .bio {
+  margin-top: 0;
 }
 .affil {
   margin: 2rem 0 0;

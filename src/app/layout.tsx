@@ -9,8 +9,9 @@ const sentences = new Intl.Segmenter("en", { granularity: "sentence" });
 
 /*
   What search engines and link previews say about the site, in his own
-  words: the opening sentence and the first sentence of the bio. Pages add
-  their own title and description; the social tags follow from those.
+  words: the first sentence of the bio (after the opening sentence, if he
+  keeps one). Pages add their own title and description; the social tags
+  follow from those.
 */
 export async function generateMetadata(): Promise<Metadata> {
   const profile = await getProfile();

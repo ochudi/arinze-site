@@ -38,8 +38,8 @@ export default async function Image({ params }: { params: Promise<Params> }) {
   if (!post) notFound();
   return card({
     name: profile.name,
-    line: letterhead(profile).join(", "),
-    body: post.title,
-    foot: post.summary || formatDate(post.date),
+    line: letterhead(profile),
+    title: post.title,
+    summary: post.summary || formatDate(post.date),
   });
 }
