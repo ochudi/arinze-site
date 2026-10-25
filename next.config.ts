@@ -3,13 +3,11 @@ import { noindex } from "./src/lib/site";
 
 /*
   The portrait, the CV and the paper PDFs live in a public Supabase bucket
-  and are served from this site's own address at /files/…, so no page or
-  link ever names the storage provider. /cv.pdf (src/app/cv.pdf) is the
-  stable CV address; the old WordPress paths and the concept previews the
-  client saw redirect to it.
+  and are served from this site's own address at /files/… (src/app/files),
+  so no page, link or header names the storage provider. /cv.pdf
+  (src/app/cv.pdf) is the stable CV address; the old WordPress paths and
+  the concept previews the client saw redirect to it.
 */
-const bucket = `${process.env.SUPABASE_URL}/storage/v1/object/public/arinze-site`;
-
 const nextConfig: NextConfig = {
   // Pinned because a stray package-lock.json in the home folder makes Turbopack guess the wrong root.
   turbopack: { root: process.cwd() },
@@ -52,9 +50,6 @@ const nextConfig: NextConfig = {
       { source: "/one/:path*", destination: "/", permanent: true },
       { source: "/two/:path*", destination: "/", permanent: true },
     ];
-  },
-  async rewrites() {
-    return [{ source: "/files/:path*", destination: `${bucket}/:path*` }];
   },
 };
 

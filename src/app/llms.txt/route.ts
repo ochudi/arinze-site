@@ -4,10 +4,65 @@ import {
   getProfile,
   getResearch,
   type Paper,
+  type Profile,
 } from "@/lib/content";
 import { formatDate, letterhead, paperHref, siteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
+
+const sentences = new Intl.Segmenter("en", { granularity: "sentence" });
+
+// What "I" does in the bio, as it reads after "he". Regular past tenses need
+// no entry; a sentence with any other verb is left out until one is added.
+const verbs: Record<string, string> = {
+  am: "is",
+  was: "was",
+  have: "has",
+  had: "had",
+  teach: "teaches",
+  taught: "taught",
+  work: "works",
+  lead: "leads",
+  led: "led",
+  study: "studies",
+};
+
+/** A sentence of the bio told about him, "I teach" -> "He teaches"; null if it cannot be. */
+function retell(sentence: string): string | null {
+  let known = true;
+  const told = sentence
+    .replace(/\bI (\w+)/g, (_, verb: string) => {
+      const said = verbs[verb] ?? (/[^e]ed$/.test(verb) ? verb : null);
+      known &&= said !== null;
+      return `he ${said}`;
+    })
+    .replace(/\b[Mm]y\b/g, "his")
+    .replace(/\b[Mm]e\b/g, "him")
+    .replace(/\b[Mm]yself\b/g, "himself");
+  if (!known || /\b(I|[Mm]ine|[Ww]e|[Oo]urs?|us)\b/.test(told)) return null;
+  return told.charAt(0).toUpperCase() + told.slice(1);
+}
+
+/*
+  The bio in the third person, so nothing here speaks in his voice that he
+  did not write: who he is from the letterhead, the bio's first sentence
+  quoted as his own description of his work, and the rest retold.
+*/
+function about(profile: Profile): string {
+  const [first, ...rest] = Array.from(sentences.segment(profile.bio), (s) =>
+    s.segment.trim(),
+  );
+  const places = [profile.institution, profile.university].filter(Boolean);
+  return [
+    profile.role &&
+      places.length > 0 &&
+      `${profile.name} is ${profile.role} at ${places.join(", ")}.`,
+    first && `In his words: “${first}”`,
+    ...rest.map(retell),
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
 
 const absolute = (href: string) => new URL(href, siteUrl).href;
 const list = (names: string[]) =>
@@ -41,7 +96,7 @@ export async function GET() {
   const text = [
     `# ${profile.name}`,
     `> ${[`${letterhead(profile).join(", ")}.`, profile.lede].filter(Boolean).join(" ")}`,
-    profile.bio,
+    about(profile),
     [
       profile.email && `Email: ${profile.email}`,
       profile.cv && `CV: ${absolute("/cv.pdf")}`,

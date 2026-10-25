@@ -1,17 +1,17 @@
 {
   "profile": {
     "name": "Arinze Nwokolo",
-    "role": "Senior Lecturer",
+    "role": "Assistant Professor",
     "institution": "Lagos Business School",
     "university": "Pan-Atlantic University",
     "lede": "",
-    "bio": "My research is in development economics, political economy, and behavioural and organisational economics, mostly on Nigeria: how terrorism shapes trust and identity, what oil and gas flaring do to conflict and to farms, and whether mental health therapy helps small firms grow. Much of it uses natural experiments and field data. Before LBS I was a CSAE Fellow at the University of Oxford; my PhD is from the University of Navarra. I teach Corporate Finance in the Executive and Full-time MBA.",
+    "bio": "My research investigates how formal and informal market frictions shape economic development across Sub-Saharan Africa, combining development economics, finance, political economy, and organizational economics. Before LBS I was a CSAE Fellow at the University of Oxford; my PhD is from the University of Navarra. I teach Corporate Finance in the Executive and Full-time MBA.",
     "portrait": "portrait/portrait.jpg",
     "email": "anwokolo@lbs.edu.ng",
     "cv": "cv/CV_Arinze_Nwokolo_October2022.pdf",
     "affiliations": [
       {
-        "name": "J-PAL African Scholar",
+        "name": "J-PAL Invited Researcher",
         "url": "https://www.povertyactionlab.org/person/nwokolo"
       },
       {
@@ -31,10 +31,6 @@
       {
         "label": "Google Scholar",
         "url": "https://scholar.google.com/citations?user=odl5jlAAAAAJ&hl=en"
-      },
-      {
-        "label": "LinkedIn",
-        "url": "https://www.linkedin.com/in/arinze-nwokolo-2b218074/"
       }
     ]
   },
