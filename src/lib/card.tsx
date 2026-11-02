@@ -6,7 +6,7 @@ export const cardSize = { width: 1200, height: 630 };
 
 const font = (file: string) => readFile(join(process.cwd(), "src/fonts", file));
 
-const paper = "#fbf7f1";
+const paper = "#ffffff";
 const ink = "#27231f";
 const muted = "#736b63";
 const olive = "#5c6a3c";

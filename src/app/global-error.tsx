@@ -16,7 +16,7 @@ export default function GlobalError({ retry }: ErrorProps) {
         style={{
           margin: 0,
           minHeight: "100dvh",
-          background: "#fbf7f1",
+          background: "#ffffff",
           color: "#27231f",
           font: "400 1.125rem/1.7 Georgia, 'Times New Roman', serif",
         }}

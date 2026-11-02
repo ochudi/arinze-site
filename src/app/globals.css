@@ -1,9 +1,9 @@
 /*
   One stylesheet. Personal stationery: a well-set letter from a thoughtful
-  academic. Warm white with the faintest sand tint, warm ink, one accent (a
-  muted olive) for links and for the single rule under the letterhead.
-  Fraunces for display and body, Mulish for metadata (src/fonts.ts). No
-  cards, no shadows, rules only where a letter has them.
+  academic. White paper, warm ink, one accent (a muted olive) for links and
+  for the single rule under the letterhead. Fraunces for display and body,
+  Mulish for metadata (src/fonts.ts). No cards, no shadows, rules only where
+  a letter has them.
 
   Motion: the underline that draws itself under links on the front page,
   the abstract opening (a height ease and a fade), and a chevron turning.
@@ -20,7 +20,7 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
-  background: #fbf7f1;
+  background: var(--paper);
 }
 body {
   min-height: 100dvh;
@@ -68,7 +68,7 @@ summary::-webkit-details-marker {
 
 /* Tokens */
 :root {
-  --paper: #fbf7f1;
+  --paper: #ffffff;
   --ink: #27231f;
   --muted: #736b63;
   --hairline: #e6ded2;
